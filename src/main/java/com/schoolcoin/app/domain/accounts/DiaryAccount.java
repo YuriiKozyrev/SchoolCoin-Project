@@ -12,15 +12,15 @@ import javax.persistence.*;
 @AllArgsConstructor
 @Builder
 @Entity
-//@Table(name = "?????????") //надо указать имя таблицы, где хранятся аккаунты электронных дневников
+@Table(name = "diary_accounts", schema = "PUBLIC") //надо указать имя таблицы, где хранятся аккаунты электронных дневников
 public class DiaryAccount {
 
-    private static final String SEQ_NAME = "user_seq";
+    private static final String SEQ_NAME = "diary_account_seq";
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = SEQ_NAME)
-    @SequenceGenerator(name = SEQ_NAME, sequenceName = SEQ_NAME)
+    @SequenceGenerator(name = SEQ_NAME, sequenceName = SEQ_NAME, allocationSize = 1)
     private Long id;
-    private String diaryAccountName;
-    private String diaryAccountPassword;
+    private String name;
+    private String password;
 }
